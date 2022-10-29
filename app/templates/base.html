@@ -9,9 +9,13 @@
     </head>
     <body>
 		<div class="topnav">
+			Microblog:
 			<a href="{{ url_for('index') }}">Home</a>
+			{% if current_user.is_anonymous %}
 			<a href="{{ url_for('login') }}">Login</a>
-			<input type="text" placeholder="Search..">
+			{% else %}
+			<a href="{{ url_for('logout') }}">Logout</a>
+			{% endif %}
 		</div>
 	
         <hr>

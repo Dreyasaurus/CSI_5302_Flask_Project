@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, request
 from app.forms import LoginForm
 from app.forms import RegistrationForm
 
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from app.models import User
 
 @app.route('/')
@@ -50,3 +50,9 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
    return render_template('register.html', title='Register', form=form)
+   
+   
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
