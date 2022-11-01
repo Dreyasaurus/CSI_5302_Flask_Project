@@ -39,14 +39,20 @@ class People(UserMixin,db.Model):
     birthYear   = db.Column(db.Integer)
     birthMonth  = db.Column(db.Integer)
     birthDay    = db.Column(db.Integer)
+    nameFirst   = db.Column(db.String(255))
+    nameLast    = db.Column(db.String(255))
+    birth_date  = db.Column(db.DateTime)
     death_date  = db.Column(db.DateTime)
     
-    def dateFormatter(self, formatString):
-        x = datetime(self.birthYear,self.birthMonth,self.birthDay).strftime(formatString)
+    def dateFormatter(self,value, formatString):
+        x = value.strftime(formatString)
         return x
         
     def getAge(self):
-        age = date.today().year - self.birthYear
+        if self.death_date is None:
+            age = date.today().year - self.birth_date.year
+        else:
+            age = self.death_date.year - self.birth_date.year
         return age
     
     def __repr__(self):
