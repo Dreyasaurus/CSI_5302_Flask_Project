@@ -64,6 +64,8 @@ class People(UserMixin,db.Model):
     finalgame_date  = db.Column(db.DateTime)
     death_date      = db.Column(db.DateTime)
     
+    awards          = db.relationship('AwardsPlayers', lazy='dynamic')
+    
     #formats a given date
     def dateFormatter(self,value, formatString):
         x = value.strftime(formatString)
@@ -80,4 +82,12 @@ class People(UserMixin,db.Model):
         return '<People {}>'.format(self.playerId)
         
         
+class AwardsPlayers(UserMixin,db.Model):
+    __tablename__ = "AwardsPlayers"
+    id              = db.Column(db.Integer, primary_key = True)
+    playerId        = db.Column(db.String(9),db.ForeignKey('people.playerId'))
+    awardId         = db.Column(db.String(255))
+    notes           = db.Column(db.String(100))
     
+    def __repr__(self):
+        return '<AwardsPlayers {}>'.format(self.playerId)

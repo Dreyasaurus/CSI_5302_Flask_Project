@@ -21,4 +21,9 @@
 	<p>Debut: {{player.dateFormatter(player.debut_date, "%B %d, %Y")}} </p>
 	<p>{% if player.finalgame_date is not none %} Last Game: {{player.dateFormatter(player.finalgame_date, "%B %d, %Y")}} {% endif %}  </p>
 	<p>Full Name: {{player.nameGiven}} {{player.nameLast}}</p>
+	
+	{% for awards in player.awards %}
+		<p>{{awards.awardId}}</p>
+	{% endfor %}
+	
 {% endblock %}

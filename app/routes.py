@@ -103,5 +103,5 @@ def edit_profile():
 @login_required
 def playerId(playerId):
     player = People.query.get(playerId)
-    print(player);
+    print(player.awards.all());
     return render_template('player.html', player=player)
