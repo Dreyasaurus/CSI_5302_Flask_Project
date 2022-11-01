@@ -103,5 +103,8 @@ def edit_profile():
 @login_required
 def playerId(playerId):
     player = People.query.get(playerId)
-    print(player.awards.all());
-    return render_template('player.html', player=player)
+    carrerSummary=[]
+    results = db.session.execute("Call carrer_summary ('"+playerId+"')")
+    for row in results:
+        carrerSummary =row
+    return render_template('player.html', player=player,carrer_summary=carrerSummary)

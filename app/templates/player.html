@@ -23,6 +23,31 @@
 		<p>Debut: {{player.dateFormatter(player.debut_date, "%B %d, %Y")}} </p>
 		<p>{% if player.finalgame_date is not none %} Last Game: {{player.dateFormatter(player.finalgame_date, "%B %d, %Y")}} {% endif %}  </p>
 		<p>Full Name: {{player.nameGiven}} {{player.nameLast}}</p>
+		
+		<br>
+		
+		<table>
+			<tr>
+				<th style="border-right: solid;">Summary</th>
+				<th>AB</th>
+				<th>H</th>
+				<th>HR</th>
+				<th style="border-right: solid;">BA</th>
+				<th>R</th>
+				<th>RBI</th>
+				<th>SB</th>
+			</tr>
+			<tr>
+				<td style="border-right: solid;">Carrer</td>
+				<td>{{carrer_summary['sumAB']}}</td>
+				<td>{{carrer_summary['sumHits']}}</td>
+				<td>{{carrer_summary['sumHr']}}</td>
+				<td style="border-right: solid;">{{"%.3f"| format(carrer_summary['ba'])}}</td>
+				<td>{{carrer_summary['sumR']}}</td>
+				<td>{{carrer_summary['SumRBI']}}</td>
+				<td>{{carrer_summary['sumSB']}}</td>
+			</tr>
+		</table>
 	</div>
 	<div>
 	{% for awards in player.awards %}
