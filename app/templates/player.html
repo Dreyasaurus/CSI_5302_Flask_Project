@@ -1,15 +1,24 @@
 {% extends "base.html" %}
-
+<!-- Player information block -->
 {% block content %}
     <h1>{{player.nameFirst}}  {{player.nameLast}}</h1>
-	<h4>position:  </h4>
-	<h4>bats:      thows:   </h4>
-	
+	<h4>Position:  </h4>
+	<h4>Bats:{{player.bats}}      Thows: {{player.throws}}  </h4>
+	<p>{{ "%.0f"| format(player.height/12) }}-{{ "%.0f"| format(((player.height/12)%1)*10) }}, {{player.weight}}lb  ( {{"%.0f"| format(player.height*2.54)}}cm, {{"%.2f"| format(player.weight/2.205)}}kg )
+	</p>
 	
 	<p>Born: {{player.dateFormatter(player.birth_date, "%B %d, %Y")}} 
-	{% if player.death_date is none %}(Age: {{player.getAge()}} )  {% endif %}</p>
+	{% if player.death_date is none %}(Age: {{player.getAge()}} )  
+	{% endif %} in {{player.birthCity}}, 
+	{% if player.birthCountry == 'USA' %}{{player.birthState}} {% else %} {{player.birthCountry}} 
+	{% endif %}</p>
 	{% if player.death_date is not none %}
-	<p>Died: {{player.dateFormatter(player.death_date, "%B %d, %Y") }} (Age: {{player.getAge()}} )  </p>
-	{% endif %}
-	
+	<p>Died: {{player.dateFormatter(player.death_date, "%B %d, %Y") }} (Age: {{player.getAge()}} ) 
+	{% endif %} in {{player.deathCity}}, 
+	{% if player.deathCountry == 'USA' %}{{player.deathState}} {% else %} {{player.deathCountry}}
+	{% endif %} 
+	</p> 
+	<p>Debut: {{player.dateFormatter(player.debut_date, "%B %d, %Y")}} </p>
+	<p>{% if player.finalgame_date is not none %} Last Game: {{player.dateFormatter(player.finalgame_date, "%B %d, %Y")}} {% endif %}  </p>
+	<p>Full Name: {{player.nameGiven}} {{player.nameLast}}</p>
 {% endblock %}

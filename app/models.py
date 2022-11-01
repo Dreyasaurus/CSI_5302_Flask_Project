@@ -35,19 +35,40 @@ def load_user(id):
 
     
 class People(UserMixin,db.Model):
-    playerId    = db.Column(db.String(9), primary_key = True)
-    birthYear   = db.Column(db.Integer)
-    birthMonth  = db.Column(db.Integer)
-    birthDay    = db.Column(db.Integer)
-    nameFirst   = db.Column(db.String(255))
-    nameLast    = db.Column(db.String(255))
-    birth_date  = db.Column(db.DateTime)
-    death_date  = db.Column(db.DateTime)
+    playerId        = db.Column(db.String(9), primary_key = True)
+    birthYear       = db.Column(db.Integer)
+    birthMonth      = db.Column(db.Integer)
+    birthDay        = db.Column(db.Integer)
+    birthCountry    = db.Column(db.String(255))
+    birthState      = db.Column(db.String(255))
+    birthCity       = db.Column(db.String(255))
+    deathYear       = db.Column(db.Integer)
+    deathMonth      = db.Column(db.Integer)
+    deathDay        = db.Column(db.Integer)
+    deathCountry    = db.Column(db.String(255))
+    deathState      = db.Column(db.String(255))
+    deathCity       = db.Column(db.String(255))
+    nameFirst       = db.Column(db.String(255))
+    nameLast        = db.Column(db.String(255))
+    nameGiven       = db.Column(db.String(255))
+    weight          = db.Column(db.Integer)
+    height          = db.Column(db.Integer)
+    bats            = db.Column(db.String(255))
+    throws          = db.Column(db.String(255))
+    debut           = db.Column(db.String(255))
+    finalGame       = db.Column(db.String(255))
+    retroID         = db.Column(db.String(255))
+    bbrefID         = db.Column(db.String(255))
+    birth_date      = db.Column(db.DateTime)
+    debut_date      = db.Column(db.DateTime)
+    finalgame_date  = db.Column(db.DateTime)
+    death_date      = db.Column(db.DateTime)
     
+    #formats a given date
     def dateFormatter(self,value, formatString):
         x = value.strftime(formatString)
         return x
-        
+    # Gets the Living or the death date of the player  
     def getAge(self):
         if self.death_date is None:
             age = date.today().year - self.birth_date.year
