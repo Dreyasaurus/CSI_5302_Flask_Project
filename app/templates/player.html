@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{player.playerId}}</h1>
+	<h4>position:  </h4>
+	<h4>bats:      thows:   </h4>
+	
+	
+	<p>Born: {{player.dateFormatter(("%b %d, %Y"))}} 
+	{% if player.death_date is none %}(Age: {{player.getAge()}} )  {% endif %}</p>
+	{{player.death_date}}
+	
+{% endblock %}

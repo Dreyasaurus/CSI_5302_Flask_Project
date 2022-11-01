@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -30,3 +30,27 @@ class User(UserMixin,db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+    
+    
+
+    
+class People(UserMixin,db.Model):
+    playerId    = db.Column(db.String(9), primary_key = True)
+    birthYear   = db.Column(db.Integer)
+    birthMonth  = db.Column(db.Integer)
+    birthDay    = db.Column(db.Integer)
+    death_date  = db.Column(db.DateTime)
+    
+    def dateFormatter(self, formatString):
+        x = datetime(self.birthYear,self.birthMonth,self.birthDay).strftime(formatString)
+        return x
+        
+    def getAge(self):
+        age = date.today().year - self.birthYear
+        return age
+    
+    def __repr__(self):
+        return '<People {}>'.format(self.playerId)
+        
+        
+    
