@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 <!-- Player information block -->
 {% block content %}
-<div style="display:flex;flex-direction:row;flex-wrap: wrap;justify-content: space-around;">
-	<div>
+<div style="display:flex;flex-direction:row;flex-wrap: wrap; width:100%;">
+	<div style="width:100%;">
 		<h1>{{player.nameFirst}}  {{player.nameLast}}</h1>
 		<h4>Position:  </h4>
 		<h4>Bats:{{player.bats}}      Thows: {{player.throws}}  </h4>
@@ -26,9 +26,9 @@
 		
 		<br>
 		
-		<table>
+		<table style="width:50%;">
 			<tr>
-				<th style="border-right: solid;">Summary</th>
+				<th style="border-right: solid; width: 78px; text-align:left;">Summary</th>
 				<th>AB</th>
 				<th>H</th>
 				<th>HR</th>
@@ -38,22 +38,23 @@
 				<th>SB</th>
 			</tr>
 			<tr>
-				<td style="border-right: solid;">Carrer</td>
-				<td>{{carrer_summary['sumAB']}}</td>
-				<td>{{carrer_summary['sumHits']}}</td>
-				<td>{{carrer_summary['sumHr']}}</td>
-				<td style="border-right: solid;">{{"%.3f"| format(carrer_summary['ba'])}}</td>
-				<td>{{carrer_summary['sumR']}}</td>
-				<td>{{carrer_summary['SumRBI']}}</td>
-				<td>{{carrer_summary['sumSB']}}</td>
+				<td style="border-right: solid;vertical-align: middle;">Carrer</td>
+				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumAB']}}</td>
+				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumHits']}}</td>
+				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumHr']}}</td>
+				<td style="border-right: solid;text-align: center;vertical-align: middle;">{{"%.3f"| format(carrer_summary['ba'])}}</td>
+				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumR']}}</td>
+				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['SumRBI']}}</td>
+				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumSB']}}</td>
 			</tr>
 		</table>
 	</div>
+	<!-- Commenting out until verification of awards
 	<div>
 	{% for awards in player.awards %}
 		<p>{{awards.awardId}}</p>
 	{% endfor %}
-	</div>
+	</div>-->
 </div>
 	
 {% endblock %}
