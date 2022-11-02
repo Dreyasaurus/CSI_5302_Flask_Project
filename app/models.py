@@ -66,6 +66,7 @@ class People(UserMixin,db.Model):
     finalgame_date  = db.Column(db.DateTime)
     death_date      = db.Column(db.DateTime)
     
+    battingDetails  = db.relationship('Batting', lazy='dynamic')
     awards          = db.relationship('AwardsPlayers', lazy='dynamic')
     
     #formats a given date
@@ -93,3 +94,18 @@ class AwardsPlayers(UserMixin,db.Model):
     
     def __repr__(self):
         return '<AwardsPlayers {}>'.format(self.playerId)
+        
+        
+class Batting(UserMixin,db.Model):
+    id              = db.Column(db.Integer, primary_key = True)
+    playerId        = db.Column(db.String(9),db.ForeignKey('people.playerId'))
+    yearId          = db.Column(db.Integer)
+    teamId          = db.Column(db.Integer)
+    team_ID         = db.Column(db.Integer)
+    lgId            = db.Column(db.String(2))
+    
+    def getAge(self,birthDate):
+        return self.yearId - birthDate
+    
+    def __repr__(self):
+        return '<Batting {}>'.format(self.playerId)

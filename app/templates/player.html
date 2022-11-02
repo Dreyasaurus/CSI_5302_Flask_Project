@@ -56,5 +56,26 @@
 	{% endfor %}
 	</div>-->
 </div>
+
+	{% if player.battingDetails is not none %}
+		
+			<table>
+				<tr>
+					<th>Year </th>
+					<th>Age </th>
+					<th>Tm </th>
+					<th>Lg </th>
+				</tr>
+				{% for batting in player.battingDetails %}
+					<tr>
+						<td>{{batting.yearId}}</td>
+						<td>{{batting.getAge(player.birthYear)}}</td>
+						<td>{{batting.teamId}}</td>
+						<td>{{batting.lgId}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		
+	{% endif %}
 	
 {% endblock %}
