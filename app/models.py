@@ -99,14 +99,43 @@ class AwardsPlayers(UserMixin,db.Model):
 class Batting(UserMixin,db.Model):
     id              = db.Column(db.Integer, primary_key = True)
     playerId        = db.Column(db.String(9),db.ForeignKey('people.playerId'))
+    stint           = db.Column(db.Integer)
     yearId          = db.Column(db.Integer)
     teamId          = db.Column(db.Integer)
     team_ID         = db.Column(db.Integer)
     lgId            = db.Column(db.String(2))
     g               = db.Column(db.Integer)
+    g_batting       = db.Column(db.Integer)
+    ab              = db.Column(db.Integer)
+    r               = db.Column(db.Integer)
+    h               = db.Column(db.Integer)
+    #b2             = db.Column(db.Integer)
+    #b3              = db.Column(db.Integer)
+    hr              = db.Column(db.Integer)
+    rbi             = db.Column(db.Integer)
+    sb              = db.Column(db.Integer)
+    cs              = db.Column(db.Integer)
+    bb              = db.Column(db.Integer)
+    so              = db.Column(db.Integer)
+    ibb             = db.Column(db.Integer)
+    hbp             = db.Column(db.Integer)
+    sh              = db.Column(db.Integer)
+    sf              = db.Column(db.Integer)
+    gidp            = db.Column(db.Integer)
+    #pa              = db.Column(db.Integer)
+    
     
     def getAge(self,birthDate):
         return self.yearId - birthDate
+        
+    def getPA(self):
+        return self.coalesce(self.ab)+self.coalesce(self.bb)+self.coalesce(self.hbp)+self.coalesce(self.sh)+self.coalesce(self.sf)
+    
+    def coalesce(self,x):
+        if x is None:
+            return 0
+        else:
+            return x
     
     def __repr__(self):
         return '<Batting {}>'.format(self.playerId)

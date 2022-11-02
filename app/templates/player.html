@@ -59,13 +59,19 @@
 
 	{% if player.battingDetails is not none %}
 		<h2>Standard Batting</h2>
-			<table style="border-spacing: 0;">
+			<table style="padding: 4px 3px;border-spacing: 0;">
 				<tr>
-					<th style="color:#900;background-color:#eee;"><b>Year</b> </th>
-					<th style="color:#900;background-color:#eee;"><b>Age</b> </th>
-					<th style="color:#900;background-color:#eee;"><b>Tm</b> </th>
-					<th style="color:#900;background-color:#eee;"><b>Lg</b> </th>
-					<th style="color:#900;background-color:#eee;"><b>G</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>Year</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>Age</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>Tm</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>Lg</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>G</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>PA</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>AB</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>R</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>H</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>HR</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>RBI</b> </th>
 				</tr>
 				{% for batting in player.battingDetails %}
 					<tr>
@@ -74,6 +80,12 @@
 						<td style="border: solid lightgray 1px;">{{batting.teamId}}</td>
 						<td style="border: solid lightgray 1px;">{{batting.lgId}}</td>
 						<td style="border: solid lightgray 1px;">{{batting.g}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.getPA()}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.ab}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.r}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.h}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.hr}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.rbi}}</td>
 					</tr>
 				{% endfor %}
 			</table>
