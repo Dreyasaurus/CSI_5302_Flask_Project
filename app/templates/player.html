@@ -59,19 +59,21 @@
 
 	{% if player.battingDetails is not none %}
 		
-			<table>
+			<table style="border-spacing: 0;">
 				<tr>
-					<th>Year </th>
-					<th>Age </th>
-					<th>Tm </th>
-					<th>Lg </th>
+					<th style="color:#900;background-color:#eee;"><b>Year</b> </th>
+					<th style="color:#900;background-color:#eee;"><b>Age</b> </th>
+					<th style="color:#900;background-color:#eee;"><b>Tm</b> </th>
+					<th style="color:#900;background-color:#eee;"><b>Lg</b> </th>
+					<th style="color:#900;background-color:#eee;"><b>G</b> </th>
 				</tr>
 				{% for batting in player.battingDetails %}
 					<tr>
-						<td>{{batting.yearId}}</td>
-						<td>{{batting.getAge(player.birthYear)}}</td>
-						<td>{{batting.teamId}}</td>
-						<td>{{batting.lgId}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.yearId}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.getAge(player.birthYear)}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.teamId}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.lgId}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.g}}</td>
 					</tr>
 				{% endfor %}
 			</table>

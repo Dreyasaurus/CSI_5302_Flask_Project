@@ -103,6 +103,7 @@ class Batting(UserMixin,db.Model):
     teamId          = db.Column(db.Integer)
     team_ID         = db.Column(db.Integer)
     lgId            = db.Column(db.String(2))
+    g               = db.Column(db.Integer)
     
     def getAge(self,birthDate):
         return self.yearId - birthDate
