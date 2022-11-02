@@ -26,23 +26,23 @@
 		
 		<br>
 		
-		<table style="width:50%;">
+		<table style="width:50%; border-spacing: 0;">
 			<tr>
-				<th style="border-right: solid; width: 78px; text-align:left;">Summary</th>
-				<th>AB</th>
-				<th>H</th>
-				<th>HR</th>
-				<th style="border-right: solid;">BA</th>
-				<th>R</th>
-				<th>RBI</th>
-				<th>SB</th>
+				<th style="color:#900;border-right: solid; width: 78px; text-align:left; border-right-color:lightgray;">Summary</th>
+				<th style="color:#900;">AB</th>
+				<th style="color:#900;">H</th>
+				<th style="color:#900;">HR</th>
+				<th style="color:#900;border-right: solid;border-right-color:lightgray;">BA</th>
+				<th style="color:#900;">R</th>
+				<th style="color:#900;">RBI</th>
+				<th style="color:#900;">SB</th>
 			</tr>
 			<tr>
-				<td style="border-right: solid;vertical-align: middle;">Carrer</td>
+				<td style="border-right: solid;vertical-align: middle; border-right-color:lightgray;">Career</td>
 				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumAB']}}</td>
 				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumHits']}}</td>
 				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumHr']}}</td>
-				<td style="border-right: solid;text-align: center;vertical-align: middle;">{{"%.3f"| format(carrer_summary['ba'])}}</td>
+				<td style="border-right: solid;text-align: center;vertical-align: middle; border-right-color:lightgray;">{{"%.3f"| format(carrer_summary['ba'])}}</td>
 				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumR']}}</td>
 				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['SumRBI']}}</td>
 				<td style="text-align: center;vertical-align: middle;">{{carrer_summary['sumSB']}}</td>
@@ -58,7 +58,7 @@
 </div>
 
 	{% if player.battingDetails is not none %}
-		
+		<h2>Standard Batting</h2>
 			<table style="border-spacing: 0;">
 				<tr>
 					<th style="color:#900;background-color:#eee;"><b>Year</b> </th>
