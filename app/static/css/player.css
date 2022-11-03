@@ -3,8 +3,10 @@
 }
 #unliked{
 	margin-left:5px;
+	cursor: pointer;
 }
 #liked{
 	margin-left:5px;
 	color:red;
+	cursor: pointer;
 }
