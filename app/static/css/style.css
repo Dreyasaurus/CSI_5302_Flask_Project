@@ -5,3 +5,16 @@
 a{
 	color:red;
 }
+.topnav{
+	display:flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	
+}
+#userImage{
+	height:50px;
+	width:50px;
+	border-radius:50%;
+	float:right;
+}
