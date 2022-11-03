@@ -3,6 +3,7 @@
     <head>
 	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	  <link rel="stylesheet" href="{{ url_for('static', filename='css/'+rule) }}">
+	  <script src="{{url_for('static', filename='javascript/base.js')}}"></script>
       {% if title %}
       <title>{{ title }} - Microblog</title>
       {% else %}
@@ -21,7 +22,11 @@
 			<a href="{{ url_for('logout') }}">Logout</a>
 			{% endif %}
 			
-			<img id="userImage" src="{{ current_user.avatar(128) }}">
+			<img id="userImage" onclick = "sayHello()" src="{{ current_user.avatar(128) }}">
+		</div>
+	
+		<div id="UserSubMenu"style="visibility:hidden;" class="card level-3">
+			<h5>Floating Card</h5>
 		</div>
 	
         <hr>

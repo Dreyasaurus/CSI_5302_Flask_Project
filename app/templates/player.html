@@ -3,7 +3,10 @@
 {% block content %}
 <div style="display:flex;flex-direction:row;flex-wrap: wrap; width:100%;">
 	<div style="width:100%;">
-		<h1 class="playerName">{{player.nameFirst}}  {{player.nameLast}}</h1> 	&#9825;
+		<div style="display:flex; flex-direction: row; align-items: center;">
+			<h1 class="playerName">{{player.nameFirst}}  {{player.nameLast}}</h1> 	
+			<div id="unliked">&#9825;</div> <div id="liked" style="display:none;">&#10084;</div>
+		</div>
 		<h4>Position:  </h4>
 		<h4>Bats:{{player.bats}}      Thows: {{player.throws}}  </h4>
 		<p>{{ "%.0f"| format(player.height/12) }}-{{ "%.0f"| format(((player.height/12)%1)*10) }}, {{player.weight}}lb  ( {{"%.0f"| format(player.height*2.54)}}cm, {{"%.2f"| format(player.weight/2.205)}}kg )
@@ -93,5 +96,5 @@
 			</table>
 		
 	{% endif %}
-	
+	<script src="{{url_for('static', filename='javascript/player.js')}}"></script>
 {% endblock %}

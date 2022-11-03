@@ -1,3 +1,10 @@
 .playerName{
 	color: red;
 }
+#unliked{
+	margin-left:5px;
+}
+#liked{
+	margin-left:5px;
+	color:red;
+}

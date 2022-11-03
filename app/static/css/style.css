@@ -1,10 +1,4 @@
-:host(){
-	background-color:blue;
-}
 
-a{
-	color:red;
-}
 .topnav{
 	display:flex;
 	align-items: center;
@@ -17,4 +11,22 @@ a{
 	width:50px;
 	border-radius:50%;
 	float:right;
+}
+
+
+.card {
+	position: absolute!important;
+	top: -24px;
+	right:3px;
+	background-color: #fff;
+	border-radius: 4px;
+	max-width: 200px;
+	margin: 10% auto;
+	height: 100px;
+	position: relative;
+	padding: 34px;
+	color: #444;
+	cursor: pointer;
+	 box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
