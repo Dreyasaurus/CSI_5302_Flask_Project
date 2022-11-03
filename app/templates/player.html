@@ -3,7 +3,7 @@
 {% block content %}
 <div style="display:flex;flex-direction:row;flex-wrap: wrap; width:100%;">
 	<div style="width:100%;">
-		<h1>{{player.nameFirst}}  {{player.nameLast}}</h1>
+		<h1 class="playerName">{{player.nameFirst}}  {{player.nameLast}}</h1> 	&#9825;
 		<h4>Position:  </h4>
 		<h4>Bats:{{player.bats}}      Thows: {{player.throws}}  </h4>
 		<p>{{ "%.0f"| format(player.height/12) }}-{{ "%.0f"| format(((player.height/12)%1)*10) }}, {{player.weight}}lb  ( {{"%.0f"| format(player.height*2.54)}}cm, {{"%.2f"| format(player.weight/2.205)}}kg )
@@ -70,6 +70,7 @@
 					<th style="color:#900;background-color:#eee;width:47px;"><b>AB</b> </th>
 					<th style="color:#900;background-color:#eee;width:47px;"><b>R</b> </th>
 					<th style="color:#900;background-color:#eee;width:47px;"><b>H</b> </th>
+					<th style="color:#900;background-color:#eee;width:47px;"><b>2B</b> </th>
 					<th style="color:#900;background-color:#eee;width:47px;"><b>HR</b> </th>
 					<th style="color:#900;background-color:#eee;width:47px;"><b>RBI</b> </th>
 				</tr>
@@ -84,6 +85,7 @@
 						<td style="border: solid lightgray 1px;">{{batting.ab}}</td>
 						<td style="border: solid lightgray 1px;">{{batting.r}}</td>
 						<td style="border: solid lightgray 1px;">{{batting.h}}</td>
+						<td style="border: solid lightgray 1px;">{{batting.b2}}</td>
 						<td style="border: solid lightgray 1px;">{{batting.hr}}</td>
 						<td style="border: solid lightgray 1px;">{{batting.rbi}}</td>
 					</tr>

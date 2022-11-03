@@ -7,6 +7,8 @@ from app.models import User, People
 from datetime import datetime
 
 
+
+
 @app.route('/')
 @app.route('/index')
 @login_required
@@ -22,7 +24,7 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template("index.html", title='Home Page', posts=posts)
+    return render_template("index.html", title='Home Page', posts=posts,rule =  request.url_rule)
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -41,7 +43,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', form=form,rule =  request.url_rule)
     
     
 @app.route('/register', methods=['GET', 'POST'])
@@ -56,7 +58,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form,rule =  request.url_rule)
    
    
 @app.route('/logout')
@@ -73,7 +75,7 @@ def user(username):
         {'author': user, 'body': 'Test post #1'},
         {'author': user, 'body': 'Test post #2'}
     ]
-    return render_template('user.html', user=user, posts=posts)
+    return render_template('user.html', user=user, posts=posts,rule =  request.url_rule)
     
     
 @app.before_request
@@ -96,7 +98,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
-    return render_template('edit_profile.html', title='Edit Profile', form=form)
+    return render_template('edit_profile.html', title='Edit Profile', form=form,rule =  request.url_rule)
     
     
 @app.route('/player/<playerId>')
@@ -107,4 +109,4 @@ def playerId(playerId):
     results = db.session.execute("Call carrer_summary ('"+playerId+"')")
     for row in results:
         carrerSummary =row
-    return render_template('player.html', player=player,carrer_summary=carrerSummary)
+    return render_template('player.html', player=player,carrer_summary=carrerSummary,rule = "player.css")
