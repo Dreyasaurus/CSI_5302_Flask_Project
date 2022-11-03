@@ -24,7 +24,7 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template("index.html", title='Home Page', posts=posts,rule =  request.url_rule)
+    return render_template("index.html", title='Home Page', posts=posts,rule =  "base.css")
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():

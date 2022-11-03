@@ -2,7 +2,7 @@
 <html>
     <head>
 	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-	  <link rel="stylesheet" href="{{ url_for('static', filename='css/'+rule) }}">
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/player.css') }}">
 	  <script src="{{url_for('static', filename='javascript/base.js')}}"></script>
       {% if title %}
       <title>{{ title }} - Microblog</title>
@@ -20,9 +20,10 @@
 			{% else %}
 			<a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
 			<a href="{{ url_for('logout') }}">Logout</a>
+			<img id="userImage" onclick = "sayHello()" src="{{ current_user.avatar(128) }}">
 			{% endif %}
 			
-			<img id="userImage" onclick = "sayHello()" src="{{ current_user.avatar(128) }}">
+			
 		</div>
 	
 		<div id="UserSubMenu"style="visibility:hidden;" class="card level-3">
