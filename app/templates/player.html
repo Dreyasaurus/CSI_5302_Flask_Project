@@ -5,7 +5,16 @@
 	<div style="width:100%;">
 		<div style="display:flex; flex-direction: row; align-items: center;">
 			<h1 class="playerName">{{player.nameFirst}}  {{player.nameLast}}</h1> 	
-			<div id="unliked">&#9825;</div> <div id="liked" style="display:none;">&#10084;</div>
+			{% if liked == 0 %}
+			<form method="post" action="{{player.playerId}}">
+				<input type="submit" action="like" value="&#9825;"  method="post" id="unliked">
+				
+			</form>
+			{% else %}
+			<form>
+				<input type="submit" action="unlike" value="&#10084;" method="post" id="liked">
+			</form>
+			{% endif %}
 		</div>
 		<h4>Position:  </h4>
 		<h4>Bats:{{player.bats}}      Thows: {{player.throws}}  </h4>

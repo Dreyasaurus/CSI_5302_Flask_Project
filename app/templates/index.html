@@ -5,9 +5,12 @@
 	   <h1> Please Login </h1>
 	{% else %}
        <h1>Hi, {{ current_user.username }}!</h1>
-	   {% for post in posts %}
-			<div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-	   {% endfor %}
+	   {% if posts|length != 0 %}
+		   <h2>Liked Players</h2>
+		   {% for players in posts %}
+				<a href="player/{{players.playerId}}">{{players.nameFirst}} {{players.nameLast}}</a>
+		   {% endfor %}
+	   {% endif %}
 	{% endif %}
     
 {% endblock %}

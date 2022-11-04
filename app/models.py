@@ -33,8 +33,13 @@ class User(UserMixin,db.Model):
 def load_user(id):
     return User.query.get(int(id))
     
+class UserPeople(UserMixin,db.Model):
+    id          = db.Column(db.Integer, primary_key=True)
+    userid      = db.Column(db.Integer)
+    playerid    = db.Column(db.String(9))
     
-
+    def __repr__(self):
+        return '<UserPeople {}>'.format(self.id)
     
 class People(UserMixin,db.Model):
     playerId        = db.Column(db.String(9), primary_key = True)

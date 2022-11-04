@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, request, flash
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, People
+from app.models import User, People, UserPeople
 from datetime import datetime
 
 
@@ -13,17 +13,14 @@ from datetime import datetime
 @app.route('/index')
 @login_required
 def index():
-    user = {'username': 'Miguel'}
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
+    if current_user.is_authenticated:
+        subquery = db.session.query(UserPeople.playerid).filter_by(userid= current_user.id).subquery()
+        query = db.session.query(People).filter(People.playerId.in_(subquery))
+        results = db.session.execute(query)
+        likedP = results.fetchall()
+        posts = [r[0] for r in likedP]
+        print(posts)
+        
     return render_template("index.html", title='Home Page', posts=posts,rule =  "base.css")
     
 @app.route('/login', methods=['GET', 'POST'])
@@ -101,12 +98,23 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile', form=form,rule =  request.url_rule)
     
     
-@app.route('/player/<playerId>')
+@app.route('/player/<playerId>', methods=['GET', 'POST'])
 @login_required
 def playerId(playerId):
+
+    if request.method == 'POST':
+        sql = 'INSERT INTO user_people(userId,playerid) VALUES('+str(current_user.id)+',\''+playerId+'\');'
+        print(sql)
+        db.session.execute(sql)
+        db.session.commit()
+        
+    
+    lResult = db.session.execute('SELECT count(1) FROM user_people where userid = \''+str(current_user.id) + '\' and playerid= \''+ playerId+'\'')
+    liked = lResult.fetchone()
+    print(liked)
     player = People.query.get(playerId)
     carrerSummary=[]
     results = db.session.execute("Call carrer_summary ('"+playerId+"')")
     for row in results:
         carrerSummary =row
-    return render_template('player.html', player=player,carrer_summary=carrerSummary,rule = "player.css")
+    return render_template('player.html', player=player,carrer_summary=carrerSummary,rule = "player.css", liked = liked[0])
