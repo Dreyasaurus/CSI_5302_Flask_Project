@@ -5,16 +5,13 @@
 	<div style="width:100%;">
 		<div style="display:flex; flex-direction: row; align-items: center;">
 			<h1 class="playerName">{{player.nameFirst}}  {{player.nameLast}}</h1> 	
-			{% if liked == 0 %}
-			<form method="post" action="{{player.playerId}}">
-				<input type="submit" action="like" value="&#9825;"  method="post" id="unliked">
-				
-			</form>
-			{% else %}
-			<form>
-				<input type="submit" action="unlike" value="&#10084;" method="post" id="liked">
-			</form>
-			{% endif %}
+			
+				{% if liked == 0 %}
+				<div id="unliked" onClick="handleInsert('{{player.playerId}}')" >&#9825 </div>
+				{% else %}
+				<div id="liked"  onClick="handleRemove('{{player.playerId}}')">&#10084;</div>
+				{% endif %}
+
 		</div>
 		<h4>Position:  </h4>
 		<h4>Bats:{{player.bats}}      Thows: {{player.throws}}  </h4>
@@ -27,9 +24,10 @@
 		{% if player.birthCountry == 'USA' %}{{player.birthState}} {% else %} {{player.birthCountry}} 
 		{% endif %}</p>
 		{% if player.death_date is not none %}
-		<p>Died: {{player.dateFormatter(player.death_date, "%B %d, %Y") }} (Age: {{player.getAge()}} ) 
-		{% endif %} in {{player.deathCity}}, 
-		{% if player.deathCountry == 'USA' %}{{player.deathState}} {% else %} {{player.deathCountry}}
+			<p>Died: {{player.dateFormatter(player.death_date, "%B %d, %Y") }} (Age: {{player.getAge()}} ) 
+			in {{player.deathCity}}, 
+			{% if player.deathCountry == 'USA' %}{{player.deathState}} {% else %} {{player.deathCountry}}
+			{% endif %} \
 		{% endif %} 
 		</p> 
 		<p>Debut: {{player.dateFormatter(player.debut_date, "%B %d, %Y")}} </p>

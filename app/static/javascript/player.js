@@ -2,12 +2,38 @@ let unliked = document.getElementById("unliked");
 let liked = document.getElementById("liked");
 console.log(unliked);
 console.log(liked);
-unliked.addEventListener("click",  function(evt) {
-	unliked.style.display="none";
-	liked.style.display="";
-});
 
-liked.addEventListener("click",  function(evt) {
-	liked.style.display="none";
-	unliked.style.display="";
-});
+
+function handleInsert(id){
+	console.log(id);
+	
+   fetch('/player/'+id, {
+     method: 'POST',
+     header: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+       }
+     }) .then((response) => response.json())
+  .then((data) => {
+	  if(data.message ==='success'){
+		  location.href = id;
+	  }
+	});
+}
+
+function handleRemove(id){
+	console.log(id);
+	
+   fetch('/player/'+id, {
+     method: 'DELETE',
+     header: {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json',
+       }
+     }) .then((response) => response.json())
+  .then((data) => {
+	  if(data.message ==='success'){
+		  location.href = id;
+	  }
+	});
+}

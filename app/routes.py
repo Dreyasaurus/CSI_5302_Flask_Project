@@ -98,20 +98,27 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile', form=form,rule =  request.url_rule)
     
     
-@app.route('/player/<playerId>', methods=['GET', 'POST'])
+@app.route('/player/<playerId>', methods=['GET', 'POST','DELETE'])
 @login_required
 def playerId(playerId):
-
     if request.method == 'POST':
         sql = 'INSERT INTO user_people(userId,playerid) VALUES('+str(current_user.id)+',\''+playerId+'\');'
-        print(sql)
         db.session.execute(sql)
         db.session.commit()
+        return '{\"message\":\"success\"}'
         
-    
+        
+    if request.method == 'DELETE':
+        r= UserPeople.query.filter_by(userid = current_user.id, playerid = playerId).first()
+        print(r)
+        db.session.delete(r)
+        r= UserPeople.query.filter_by(userid = current_user.id, playerid = playerId).first()
+        print(r)
+        db.session.commit()
+        return '{\"message\":\"success\"}'
+        
     lResult = db.session.execute('SELECT count(1) FROM user_people where userid = \''+str(current_user.id) + '\' and playerid= \''+ playerId+'\'')
     liked = lResult.fetchone()
-    print(liked)
     player = People.query.get(playerId)
     carrerSummary=[]
     results = db.session.execute("Call carrer_summary ('"+playerId+"')")
