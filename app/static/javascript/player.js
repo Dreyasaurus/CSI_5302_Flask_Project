@@ -1,8 +1,5 @@
 let unliked = document.getElementById("unliked");
 let liked = document.getElementById("liked");
-console.log(unliked);
-console.log(liked);
-
 
 function handleInsert(id){
 	console.log(id);
