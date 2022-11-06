@@ -128,7 +128,6 @@ class Batting(UserMixin,db.Model):
     sh              = db.Column(db.Integer)
     sf              = db.Column(db.Integer)
     gidp            = db.Column(db.Integer)
-    #pa              = db.Column(db.Integer)
     
     
     def getAge(self,birthDate):
@@ -136,7 +135,11 @@ class Batting(UserMixin,db.Model):
         
     def getPA(self):
         return self.coalesce(self.ab)+self.coalesce(self.bb)+self.coalesce(self.hbp)+self.coalesce(self.sh)+self.coalesce(self.sf)
-    
+    def getBA(self):
+        try:
+            return self.h/self.ab
+        except ZeroDivisionError:
+            return 0
     def coalesce(self,x):
         if x is None:
             return 0
