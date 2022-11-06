@@ -119,4 +119,5 @@ def playerId(playerId):
     results = db.session.execute("Call carrer_summary ('"+playerId+"')")
     for row in results:
         carrerSummary =row
+    print(player.playerImage)
     return render_template('player.html', player=player,carrer_summary=carrerSummary,rule = "player.css", liked = liked[0])

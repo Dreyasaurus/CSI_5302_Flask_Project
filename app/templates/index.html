@@ -7,9 +7,18 @@
        <h1>Hi, {{ current_user.username }}!</h1>
 	   {% if posts|length != 0 %}
 		   <h2>Liked Players</h2>
+		   <div style="display:flex; flex-direction: row;">
 		   {% for players in posts %}
-				<a href="player/{{players.playerId}}">{{players.nameFirst}} {{players.nameLast}}</a>
+		    <div class="card">
+			  <img src="{{players.playerImage}}" alt="Avatar" style="width:50%">
+		
+			  <div class="container">
+				<h4><a href="player/{{players.playerId}}"><strong>{{players.nameFirst}} {{players.nameLast}}</strong></a></h4> 
+				<p>Architect & Engineer</p> 
+			  </div>
+			</div>
 		   {% endfor %}
+			</div>
 	   {% endif %}
 	{% endif %}
     

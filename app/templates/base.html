@@ -18,16 +18,10 @@
 			{% if current_user.is_anonymous %}
 			<a href="{{ url_for('login') }}">Login</a>
 			{% else %}
-
 			<img id="userImage" onclick = "sayHello( '{{current_user.username}}' )" title="Go to User Profile" src="{{ current_user.avatar(128) }}">
-			{% endif %}
-			
-			
+			{% endif %}		
 		</div>
 	
-		<div id="UserSubMenu"style="visibility:hidden;" class="card level-3">
-			<h5>Floating Card</h5>
-		</div>
 	
         <hr>
         {% block content %}{% endblock %}

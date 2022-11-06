@@ -70,6 +70,7 @@ class People(UserMixin,db.Model):
     debut_date      = db.Column(db.DateTime)
     finalgame_date  = db.Column(db.DateTime)
     death_date      = db.Column(db.DateTime)
+    playerImage     = db.Column(db.String(255))
     
     battingDetails  = db.relationship('Batting', lazy='dynamic')
     awards          = db.relationship('AwardsPlayers', lazy='dynamic')

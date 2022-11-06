@@ -4,6 +4,9 @@
 <div style="display:flex;flex-direction:row;flex-wrap: wrap; width:100%;">
 	<div style="width:100%;">
 		<div style="display:flex; flex-direction: row; align-items: center;">
+			{% if player.playerImage is not none %}
+			 <img src="{{player.playerImage}}" alt="Avatar">
+			{% endif %}
 			<h1 class="playerName">{{player.nameFirst}}  {{player.nameLast}}</h1> 	
 			
 				{% if liked == 0 %}
