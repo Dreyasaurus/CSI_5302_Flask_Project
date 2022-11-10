@@ -1,7 +1,7 @@
 # CSI_5302_Flask_Project
 
 TO DO:
-1. Install the 2019 MySQL version Links to an external site.of the database. make SQL - 
+1. Install the 2019 MySQL version Links to an external site.of the database. make SQL - **Audrey**
 2. Create an analytics table. The table may contain additional analytic fields (recommended) but must contain a result of your own creation called park-adjusted runs created and park-adjusted runs created per 27 outs
 
 Challenge:
